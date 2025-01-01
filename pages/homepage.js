@@ -9,7 +9,7 @@ exports.HomePage = class HomePage {
         this.phones_pdas_tab = page.locator("//a[text()='Phones & PDAs']")
         this.laptops_and_notebooks_tab = page.locator("//a[text()='Laptops & Notebooks']")
         this.show_all_laptops_and_notebooks_link = page.locator("//a[text()='Show All Laptops & Notebooks']")
-
+        this.search_box = page.locator("#search > input")
 
     }
 
@@ -57,5 +57,17 @@ exports.HomePage = class HomePage {
 
     async click_on_show_all_laptops_and_notebooks_link(){
         await this.show_all_laptops_and_notebooks_link.click()
+    }
+
+    async enter_product_to_search(product_name){
+        await this.search_box.click()
+        await this.page.keyboard.type(product_name)
+        await this.page.keyboard.press('Enter')
+
+    }
+
+    async navigate_to_login_page(){
+        await this.click_on_my_account_menu()
+        await this.click_on_login_btn()
     }
 }

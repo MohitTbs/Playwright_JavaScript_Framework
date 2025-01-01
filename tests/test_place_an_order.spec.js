@@ -39,6 +39,5 @@ test('Verify the user can place an order as a guest', async ({page}) => {
     const csp = new CheckoutSuccessPage(page)
     const msg = await csp.get_placed_order_msg()
     expect(msg).toBe('Your order has been successfully processed!')
-    await page.waitForTimeout(5000)
 
 })

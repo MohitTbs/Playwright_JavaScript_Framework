@@ -32,7 +32,7 @@ module.exports = defineConfig({
     actionTimeout: 10000,
     navigationTimeout: 60*1000,
     screenshot: 'only-on-failure',
-    permissions: ['clipboard-read', 'clipboard-write'],
+    //permissions: ['clipboard-read', 'clipboard-write'],
   },
 
   timeout: 5 * 60 * 1000,
@@ -49,12 +49,16 @@ module.exports = defineConfig({
 
     // {
     //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    //   use: { ...devices['Desktop Firefox'],
+    //     viewport: { width: 1920, height: 920 }
+    //    },
     // },
 
     // {
     //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
+    //   use: { ...devices['Desktop Safari'],
+    //     viewport: { width: 1920, height: 920 }
+    //    },
     // },
 
     /* Test against mobile viewports. */
@@ -74,7 +78,7 @@ module.exports = defineConfig({
     // },
     // {
     //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome', viewport: { width: 1920, height: 920 } },
     // },
   ],
 
