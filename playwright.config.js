@@ -21,7 +21,7 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never' }], /*["allure-playwright", { outputFolder: './allure-results' }]*/],
+  reporter: [['html', { open: 'never' }], ["allure-playwright", { outputFolder: './allure-results' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -33,9 +33,11 @@ module.exports = defineConfig({
     navigationTimeout: 60*1000,
     screenshot: 'only-on-failure',
     //permissions: ['clipboard-read', 'clipboard-write'],
+    //testHook: './hooks.js',
   },
 
   timeout: 5 * 60 * 1000,
+  globalSetup: './tests/global-setup.js',
 
   /* Configure projects for major browsers */
   projects: [

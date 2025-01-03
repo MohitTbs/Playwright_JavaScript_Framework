@@ -1,8 +1,16 @@
-const { test, expect } = require('@playwright/test')
+const { test, expect, use } = require('@playwright/test')
 const {HomePage} = require('../pages/homepage')
 const {ProductSearchPage} = require('../pages/product_search_page')
-
 const data = JSON.parse(JSON.stringify(require('../testdatafiles/data.json')))
+const {beforeEachLogs, afterEachLogs} = require('../utilities/logsfortest')
+
+test.beforeEach(async ({page},testInfo) => {
+    beforeEachLogs(testInfo)
+})
+
+test.afterEach(async ({page},testInfo) => {
+    afterEachLogs(testInfo)
+})
 
 for (let value of data.searchProducts) {
 

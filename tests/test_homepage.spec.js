@@ -1,5 +1,14 @@
-const { test, expect} = require('@playwright/test')
+const { test, expect, use} = require('@playwright/test')
 const {HomePage} = require('../pages/homepage')
+const {beforeEachLogs, afterEachLogs} = require('../utilities/logsfortest')
+
+test.beforeEach(async ({page},testInfo) => {
+    beforeEachLogs(testInfo)
+})
+
+test.afterEach(async ({page},testInfo) => {
+    afterEachLogs(testInfo)
+})
 
 test('Verify the working of swiper-pagination-bullet-active', async ({page}) => {
     await page.goto('')
@@ -15,7 +24,7 @@ test('Verify the working of swiper-pagination-bullet-active', async ({page}) => 
     
 })
 
-test.only('Verify the user gets the message to login or create account when they add a product to wish list as a guest', async ({page}) => {
+test('Verify the user gets the message to login or create account when they add a product to wish list as a guest', async ({page}) => {
     await page.goto('')
     const hp = new HomePage(page)
     await hp.click_on_random_wish_list_button()
@@ -25,4 +34,3 @@ test.only('Verify the user gets the message to login or create account when they
     expect(msg).toContain('You must login or create an account'.toLowerCase())
     
 })
-

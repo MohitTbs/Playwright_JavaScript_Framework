@@ -1,11 +1,19 @@
-const { test, expect} = require('@playwright/test')
+const { test, expect, use} = require('@playwright/test')
 const {HomePage} = require('../pages/homepage')
 const {LaptopsAndNotebooksPage} = require('../pages/laptops_and_notebooks_page')
 const {ProductPage} = require('../pages/product_page')
 const {CommonMenuPage} = require('../pages/common_menu_page')
 const {CheckOutPage} = require('../pages/checkout_page')
 const {CheckoutSuccessPage} = require('../pages/checkout_success_page')
+const {beforeEachLogs, afterEachLogs} = require('../utilities/logsfortest')
 
+test.beforeEach(async ({page},testInfo) => {
+    beforeEachLogs(testInfo)
+})
+
+test.afterEach(async ({page},testInfo) => {
+    afterEachLogs(testInfo)
+})
 
 test('Verify the user can place an order as a guest', async ({page}) => {
     await page.goto('')
